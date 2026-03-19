@@ -4,14 +4,15 @@ Takes a DEXPI Proteus XML file, runs the GraphicBuilder JAR to render a PNG,
 and displays the result.
 """
 
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
 
 import streamlit as st
 
-JAVA = Path("/home/rumi/.local/opt/jdk8/bin/java")
-JAR = Path("/home/rumi/dexpi/GraphicBuilder/org.dexpi.pid.imaging/target/GraphicBuilder-1.0-jar-with-dependencies.jar")
+JAVA = shutil.which("java") or "java"
+JAR = Path(__file__).parent / "GraphicBuilder/org.dexpi.pid.imaging/target/GraphicBuilder-1.0-jar-with-dependencies.jar"
 MAIN_CLASS = "org.dexpi.pid.test.old.CommandLineTester"
 
 
